@@ -4,11 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-        <!-- The problem I'm having is that I'm not being able to access the style.css to my understanding because the 
-        file is outside of this directory we have to go back one directory with '..' and then search for it with '/style.css'
-        Dont know why is not working it has to be that I'm missing something but I did search on the internet and didn't find
-        a way to solve it. Am I missing something? Ps. Same is happening with adding the logo inside of the 'home.html' template. Line 14 of home.html -->
-        <link rel="stylesheet" href="../style.css">
+        <!-- What happenned is that flask is weird, and expects you to have this folder structure for stylesheets. -->
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
         <title>{% block title %}{% endblock %}</title>  
     </head>
     <body>
