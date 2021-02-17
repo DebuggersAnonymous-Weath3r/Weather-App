@@ -1,2 +1,5 @@
-.vscode
+__pycache__
+.vscode/
 .DS_Store
+keys.py
+weather.json
