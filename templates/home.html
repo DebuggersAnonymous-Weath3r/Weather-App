@@ -1,0 +1,56 @@
+<!-- This tells flask that this template is an extention of base.html -->
+{% extends 'base.html' %} 
+
+
+
+{% block title %}Weath3r | Home{% endblock %}
+
+{% block content %}
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid d-flex justify-content-center">
+        <a class="navbar-brand" href="#"><image src="{{url_for('static',filename = 'images/logo.png')}}" height="100" ></image></a>
+    </div>
+</nav>
+
+<!-- Search -->
+<div class="search-bar d-flex justify-content-center py-4 pt-2">
+    <form>
+        <div class="input-field">
+            <input id="search" type="text" placeholder="Search for a location">
+        </div>
+    </form>
+</div>
+
+<!-- Country Select -->
+<div class="container d-flex flex-row justify-content-center">
+    <div class="row" style="width: 100%;">
+        <div class="col-4 p-4">
+            <div class="row fs-2 fw-bold">North America</div>
+            <div class="row fs-4 fw-light">San Francisco, California</div>
+            <div class="row fs-4 fw-light">Tulum, Mexico</div>
+            <div class="row fs-4 fw-light">New York City, New York</div>
+        </div>
+        <div class="col-4 p-4">
+            <div class="row fs-2 fw-bold">Central & South America</div>
+            <div class="row fs-4 fw-light">Santiago, Chile</div>
+            <div class="row fs-4 fw-light">Sao Paulo, Brazil</div>
+        </div>
+        <div class="col-4 p-4">
+            <div class="row fs-2 fw-bold">Australia</div>
+            <div class="row fs-4 fw-light">Sydney, Australia</div>
+        </div>
+        <div class="col-4 p-4">
+            <div class="row fs-2 fw-bold">Europe</div>
+            <div class="row fs-4 fw-light">Zürich, Switzerland</div>
+            <div class="row fs-4 fw-light">Madrid, Spain</div>
+        </div>
+            <div class="col-4 p-4">
+            <div class="row fs-2 fw-bold">Asia</div>
+            <div class="row fs-4 fw-light">Seuol, South Korea</div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
