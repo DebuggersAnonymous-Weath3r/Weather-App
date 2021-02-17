@@ -3,12 +3,12 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def home_page():
     """A homepage with the form to search and some quick locations that can be searched."""
     return render_template('home.html')
 
-@app.route('/search')
+@app.route('/search', methods=['GET'])
 def search_page():
     """A page where it will be display the seven day forcast of a specific location."""
     return render_template('search.html')
