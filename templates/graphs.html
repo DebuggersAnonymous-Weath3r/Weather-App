@@ -6,6 +6,64 @@
 {% block title %}Weath3r | More Info{% endblock %}
 
 {% block content %}
-<!-- All the html for the website goes here. -->
-<!-- This is like an extention of the base.html but just for this page. -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid d-flex justify-content-center">
+        <a class="navbar-brand" href="/"><img src="{{url_for('static',filename = 'images/logo.png')}}" height="100" alt="Logo of Weath3r"></a>
+    </div>
+</nav>
+
+  <!-- Details -->
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p><b>High</b> 59°F / <b>Low</b> 51°F</p>
+        </div>
+        <div class="col sun-times">
+            <div>
+                <img src="../images/sunrise.png" height="75" alt="Sunrise">
+                <p>7:30 AM</p>
+            </div>
+            <div>
+                <img src="../images/sunset.png" height="75" alt="Sunset">
+                <p>5:30 PM</p>
+            </div>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <p><b>Rain</b> 27%</p>
+        </div>
+    </div>
+    <div class="row details">
+        <div class="col-3">
+            <b>Temperature:</b> 55°
+        </div>
+        <div class="col-3">
+            <b>Wind:</b> 6 mph
+        </div>
+        <div class="col-3">
+            <b>Humidity:</b> 72%
+        </div>
+        <div class="col-3">
+            <b>UV Index:</b> 1
+        </div>
+        <div class="col-3">
+            <b>Preciptation:</b> 27%
+        </div>
+        <div class="col-3">
+            <b>Preassure:</b> 1017 mb
+        </div>
+        <div class="col-3">
+            <b>Dew Point:</b> 43°
+        </div>
+        <div class="col-3">
+            <b>Visibility:</b> 10 mi
+        </div>
+    </div>
+</div>
+
+  <!-- Timeline -->
+  <div>Timeline goes here!</div>
+
+  <!-- Graph -->
+  <div>Graphs goes here!</div>
 {% endblock %}

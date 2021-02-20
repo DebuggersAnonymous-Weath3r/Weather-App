@@ -6,6 +6,86 @@
 {% block title %}Weath3r | Weekly Forecast{% endblock %}
 
 {% block content %}
-<!-- All the html for the website goes here. -->
-<!-- This is like an extention of the base.html but just for this page. -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid d-flex justify-content-center">
+        <a class="navbar-brand" href="/"><img src="{{url_for('static',filename = 'images/logo.png')}}" height="100" alt="Logo of Weath3r"></a>
+    </div>
+</nav>
+
+  <!-- Search -->
+<div class="search-bar d-flex justify-content-center py-4 pt-2">
+    <form>
+        <div class="input-field">
+            <input id="search" type="text" placeholder="Search for a location">
+        </div>
+    </form>
+</div>
+
+  <!-- Weather Cards -->
+<div class="card-group">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Sunday</h5>
+            <p class="card-text">Sunny</p>
+            <p class="card-text fs-1">56°F</p>
+            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Monday</h5>
+            <p class="card-text">Sunny</p>
+            <p class="card-text fs-1">56°F</p>
+            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Tuesday</h5>
+            <p class="card-text">Sunny</p>
+            <p class="card-text fs-1">56°F</p>
+            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Wednesday</h5>
+            <p class="card-text">Sunny</p>
+            <p class="card-text fs-1">56°F</p>
+            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Thursday</h5>
+            <p class="card-text">Sunny</p>
+            <p class="card-text fs-1">56°F</p>
+            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Friday</h5>
+            <p class="card-text">Sunny</p>
+            <p class="card-text fs-1">56°F</p>
+            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Saturday</h5>
+            <p class="card-text">Sunny</p>
+            <p class="card-text fs-1">56°F</p>
+            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+</div>
 {% endblock %}
