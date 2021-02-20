@@ -24,15 +24,69 @@
 
   <!-- Weather Cards -->
 <div class="card-group">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Sunday</h5>
-            <p class="card-text">Sunny</p>
-            <p class="card-text fs-1">56°F</p>
-            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <button type="button" class="btn btn-lg btn-block text-light border-0" data-toggle="modal" data-target="#staticBackdrop">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Sunday</h5>
+                <p class="card-text">Sunny</p>
+                <p class="card-text fs-1">56°F</p>
+                <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
         </div>
-    </div>
+    </button>
+    <form action="/graphs">
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel" >Lorem, ipsum dolor.</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="pick-up-where" >Lorem, ipsum dolor.</label>
+                                <input type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="pick-up-where">
+                            </div>
+                            <div class="form-group col-md-6">
+                            <label for="" >Lorem, ipsum dolor.</label>
+                            <input type="time" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                            <label for="" ></label>
+                            <input type="number" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="">
+                            </div>
+                            <div class="form-group col-md-6">
+                            <label for="" >Lorem, ipsum dolor.</label>
+                            <input type="date" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="">
+                            </div>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1" >Lorem ipsum dolor sit.</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck2">
+                            <label class="custom-control-label" for="customCheck2" >Lorem ipsum dolor sit amet consectetur.</label>
+                        </div>        
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary" value="More Details"></input>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+
+  
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Monday</h5>
@@ -42,6 +96,7 @@
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
     </div>
+<!--
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Tuesday</h5>
@@ -86,6 +141,7 @@
             <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
-    </div>
+    </div> -->
+
 </div>
 {% endblock %}
