@@ -16,9 +16,12 @@
 
 <!-- Search -->
 <div class="search-bar d-flex justify-content-center py-4 pt-2">
-    <form>
-        <div class="input-field">
-            <input id="search" type="text" placeholder="Search for a location">
+    <form action="/search" method="POST">
+        <div class="input-field" >
+            <input id="search" name="location" type="text" placeholder="Search for a location"> <br>
+        </div>
+        <div class="submit">
+            <input type="submit" value="Search Weather">
         </div>
     </form>
 </div>

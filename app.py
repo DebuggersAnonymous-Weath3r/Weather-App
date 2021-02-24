@@ -1,16 +1,27 @@
 from flask import Flask, request, render_template
+from api_calls import weather_export
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home_page():
     """A homepage with the form to search and some quick locations that can be searched."""
-    return render_template('home.html')
+    if request.method == "POST":
+        location = request.form.get("location")
+        weather_export(location)
+        return render_template('search.html')
+    else:
+        return render_template('home.html')
 
-@app.route('/search', methods=['GET'])
+@app.route('/search', methods=['GET', 'POST'])
 def search_page():
     """A page where it will be display the seven day forcast of a specific location."""
-    return render_template('search.html')
+    if request.method == "POST":
+        location = request.form.get("location")
+        weather_export(location)
+        return render_template('search.html')
+    else:
+        return render_template('home.html')
 
 @app.route('/graphs')
 def graphs_page():
