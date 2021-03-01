@@ -13,57 +13,62 @@
     </div>
 </nav>
 
-  <!-- Details -->
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <p><b>High</b> 59°F / <b>Low</b> 51°F</p>
+<!-- Details -->
+<div class="container text-center">
+    <div class="container d-flex mx-auto row py-5">
+        <div class="col-3 pt-3">
+            <p><b>High</b> <span id="high-temp"></span>°F / <b>Low</b> <span id="low-temp"></span>°F</p>
         </div>
-        <div class="col sun-times">
+        <div class="col-6 sun-times">
             <div>
-                <img src="../images/sunrise.png" height="75" alt="Sunrise">
-                <p>7:30 AM</p>
+                <img src="{{ url_for('static', filename = '/images/sunrise.png') }}" height="75" alt="Sunrise">
+                <p><span id="time-rise"></span> AM</p>
             </div>
             <div>
-                <img src="../images/sunset.png" height="75" alt="Sunset">
-                <p>5:30 PM</p>
+                <img src="{{ url_for('static', filename = '/images/sunset.png') }}" height="75" alt="Sunset">
+                <p><span id="time-set"></span> PM</p>
             </div>
         </div>
-        <div class="col d-flex justify-content-end">
-            <p><b>Rain</b> 27%</p>
+        <div class="col-3 pt-3">
+            <p><b>Rain</b> <span id="precipitation-intensity"></span>%</p>
         </div>
     </div>
-    <div class="row details">
+
+    <div class="container mx-auto row details">
         <div class="col-3">
-            <b>Temperature:</b> 55°
+            <b>Temperature:</b> <span id="current-temperature">55</span>°
         </div>
         <div class="col-3">
-            <b>Wind:</b> 6 mph
+            <b>Wind:</b> <span id="wind-speed"></span> mph
         </div>
         <div class="col-3">
-            <b>Humidity:</b> 72%
+            <b>Humidity:</b> <span id="humidity"></span>%
         </div>
         <div class="col-3">
-            <b>UV Index:</b> 1
+            <b>UV Index:</b> <span id="uv-index"></span>
         </div>
         <div class="col-3">
-            <b>Preciptation:</b> 27%
+            <b>Preciptation:</b> <span id="precipitation"></span> %
         </div>
         <div class="col-3">
-            <b>Preassure:</b> 1017 mb
+            <b>Preassure:</b> <span id="pressure"></span>  mb
         </div>
         <div class="col-3">
-            <b>Dew Point:</b> 43°
+            <b>Dew Point:</b> <span id="dew-point"></span>°
         </div>
         <div class="col-3">
-            <b>Visibility:</b> 10 mi
+            <b>Visibility:</b> <span id="visibility"></span> mi
         </div>
     </div>
 </div>
 
-  <!-- Timeline -->
-  <div>Timeline goes here!</div>
+<!-- Graph -->
+<div class= "container" id="container-for-all-graphs">
+    <!-- All graphs goes here -->
+</div>
 
-  <!-- Graph -->
-  <div>Graphs goes here!</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script> <!-- This is used to create the graphs. -->
+<script type=text/javascript id=json-location>{{ url_for('static', filename = 'js/weather.json') }}</script> <!-- Passing the path location for the weather.js to being use in the javascript file. -->
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/weather.json') }}"></script> <!-- Passing the information on the weather.json to be fetch by the javascript file.  -->
+<script src="{{ url_for('static', filename = 'js/scripts.js') }}" type="module"></script> <!-- This connects the javascript file to the html -->
 {% endblock %}
