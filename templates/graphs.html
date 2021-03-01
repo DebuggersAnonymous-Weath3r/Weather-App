@@ -70,5 +70,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script> <!-- This is used to create the graphs. -->
 <script type=text/javascript id=json-location>{{ url_for('static', filename = 'js/weather.json') }}</script> <!-- Passing the path location for the weather.js to being use in the javascript file. -->
 <script type="text/javascript" src="{{ url_for('static', filename = 'js/weather.json') }}"></script> <!-- Passing the information on the weather.json to be fetch by the javascript file.  -->
-<script src="{{ url_for('static', filename = 'js/scripts.js') }}" type="module"></script> <!-- This connects the javascript file to the html -->
+<script src="{{ url_for('static', filename = 'js/graph_scripts.js') }}" type="module"></script> <!-- This connects the javascript file to the html -->
 {% endblock %}
