@@ -3,4 +3,4 @@ __pycache__
 .DS_Store
 /env
 keys.py
-weather.json
+static/js/weather.json
