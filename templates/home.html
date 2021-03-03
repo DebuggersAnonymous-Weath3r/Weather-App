@@ -16,12 +16,12 @@
 
 <!-- Search -->
 <div class="search-bar d-flex justify-content-center py-4 pt-2">
-    <form action="/search" method="POST">
+    <form action="{{ url_for('search_page') }}" method="POST">
         <div class="input-field" >
             <input id="search" name="location" type="text" placeholder="Search for a location"> <br>
         </div>
         <div class="submit">
-            <input type="submit" value="Search Weather">
+            <input type="submit" value="Search Weather" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1">
         </div>
     </form>
 </div>

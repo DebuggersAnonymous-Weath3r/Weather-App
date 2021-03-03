@@ -15,7 +15,7 @@ fetch(weatherDataLocation)
             // console.log(day)
             return day
         }
-
+        console.log(weatherData['timezone'])
         for (let index=0; index < 7; ++index) {
 
             const cardTitle = document.getElementById('card-title'+index)

@@ -14,6 +14,7 @@ const dewPoint = document.getElementById('dew-point')
 const visibility = document.getElementById('visibility')
 const containerForAllGraphs = document.getElementById('container-for-all-graphs')
 const weatherDataLocation = document.getElementById('json-location').innerText
+const dayID = document.getElementById('day_id').innerText
 
 fetch(weatherDataLocation)
     .then(response => response.json())
@@ -27,19 +28,19 @@ fetch(weatherDataLocation)
             return time
         }
 
-        highTemperature.innerText = Math.round(weatherData['daily']['data'][0]['temperatureHigh'])
-        lowTemperature.innerText = Math.round(weatherData['daily']['data'][0]['temperatureLow'])
-        timeRise.innerText = convertFromEpochToHumanReadable(weatherData['daily']['data'][0]['sunriseTime'])
-        timeSet.innerText = convertFromEpochToHumanReadable(weatherData['daily']['data'][0]['sunsetTime'])
-        precipitationIntensity.innerText = (weatherData['daily']['data'][0]['precipIntensity'] * 100).toFixed(2)
+        highTemperature.innerText = Math.round(weatherData['daily']['data'][dayID]['temperatureHigh'])
+        lowTemperature.innerText = Math.round(weatherData['daily']['data'][dayID]['temperatureLow'])
+        timeRise.innerText = convertFromEpochToHumanReadable(weatherData['daily']['data'][dayID]['sunriseTime'])
+        timeSet.innerText = convertFromEpochToHumanReadable(weatherData['daily']['data'][dayID]['sunsetTime'])
+        precipitationIntensity.innerText = (weatherData['daily']['data'][dayID]['precipIntensity'] * 100).toFixed(2)
         currentTemperature.innerText = Math.round(weatherData['currently']['temperature'])
-        windSpeed.innerText = weatherData['daily']['data'][0]['windSpeed']
-        humidity.innerText = weatherData['daily']['data'][0]['humidity'] * 100
-        uvIndex.innerText = weatherData['daily']['data'][0]['uvIndex']
-        precipitationProbability.innerText = weatherData['daily']['data'][0]['precipProbability']
-        pressure.innerText = Math.round(weatherData['daily']['data'][0]['pressure'])
-        dewPoint.innerText = weatherData['daily']['data'][0]['dewPoint']
-        visibility.innerText = weatherData['daily']['data'][0]['visibility']
+        windSpeed.innerText = weatherData['daily']['data'][dayID]['windSpeed']
+        humidity.innerText = weatherData['daily']['data'][dayID]['humidity'] * 100
+        uvIndex.innerText = weatherData['daily']['data'][dayID]['uvIndex']
+        precipitationProbability.innerText = weatherData['daily']['data'][dayID]['precipProbability']
+        pressure.innerText = Math.round(weatherData['daily']['data'][dayID]['pressure'])
+        dewPoint.innerText = weatherData['daily']['data'][dayID]['dewPoint']
+        visibility.innerText = weatherData['daily']['data'][dayID]['visibility']
 
 
         

@@ -1,6 +1,7 @@
 import json
 import requests
 from keys import dark_sky_key, true_way_key
+from time import sleep
 
 def get_weather(location):
     # True Way
@@ -20,7 +21,14 @@ def get_weather(location):
     DS_Parameters = {"lang":"en","units":"auto","exclude":"minutely,flags"} # Make these parameters into variables
 
     DS_Request = requests.request('GET', DS_URL, headers =dark_sky_key, params = DS_Parameters )
-    DS_Results = DS_Request.json()
+    DS_Results = json.dumps(DS_Request.json(), indent=2)
+    # DS_Results = DS_Request.json()
 
     return DS_Results
 
+def weather_export(location):
+    weather_data = open('./static/js/weather.json', 'w') 
+    weather_data.write(get_weather(location))
+    weather_data.close()
+
+# weather_export('Tokyo')
