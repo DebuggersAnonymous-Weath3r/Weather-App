@@ -17,7 +17,7 @@
 <div class="search-bar d-flex justify-content-center py-4 pt-2">
     <form action="/search" method="POST">
         <div class="input-field" >
-            <input id="search" name="location" type="text" placeholder="Search for a location"> <br>
+            <input id="search" name="location" type="text" value="{{ location }}">
         </div>
         <div class="submit">
             <input type="submit" value="Search Weather">
@@ -26,69 +26,28 @@
 </div>
 
   <!-- Weather Cards -->
+  
 <div class="card-group">
     <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Sunday</h5>
-            <p class="card-text">Sunny</p>
-            <p class="card-text fs-1">56°F</p>
-            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <div class="card-body-current">
+            <h5 class="card-title fs-1">{{ weekdays[0] }}</h5>
+            <p class="card-text">{{ weekly[0]["icon"] }}</p>
+            <p class="card-text fs-1">{{ currently["temperature"]|round|int }}°F</p>
+            <p class="card-text">Preciptation: {{  currently["precipProbability"] * 100 }}% <br>Humidity: {{ currently["humidity"] * 100 }}% <br>Wind: {{ currently["windSpeed"] }} mph</p>
+            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
         </div>
     </div>
+    {% for i in range((weekly|length) - 1 ) %}
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Monday</h5>
-            <p class="card-text">Sunny</p>
-            <p class="card-text fs-1">56°F</p>
-            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <h5 class="card-title">{{ weekdays[i + 1] }}</h5>
+            <p class="card-text">{{ weekly[i + 1]["icon"] }}</p>
+            <p class="card-text fs-3">{{ weekly[i + 1]["temperatureLow"]|round|int }}°F ~ {{ weekly[i + 1]["temperatureHigh"]|round|int }}°F</p>
+            <p class="card-text">Preciptation: {{ (weekly[i + 1]["precipProbability"] * 100)|round|int }}% <br>Humidity: {{  (weekly[i+1]["humidity"] * 100)|round|int }}% <br>Wind: {{ weekly[i + 1]["windSpeed"] }} mph</p>
+            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
         </div>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Tuesday</h5>
-            <p class="card-text">Sunny</p>
-            <p class="card-text fs-1">56°F</p>
-            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Wednesday</h5>
-            <p class="card-text">Sunny</p>
-            <p class="card-text fs-1">56°F</p>
-            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Thursday</h5>
-            <p class="card-text">Sunny</p>
-            <p class="card-text fs-1">56°F</p>
-            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Friday</h5>
-            <p class="card-text">Sunny</p>
-            <p class="card-text fs-1">56°F</p>
-            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Saturday</h5>
-            <p class="card-text">Sunny</p>
-            <p class="card-text fs-1">56°F</p>
-            <p class="card-text">Preciptation: 0% <br>Humidity: 57% <br>Wind: 6 mph</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-    </div>
+    {% endfor %}
 </div>
+
 {% endblock %}

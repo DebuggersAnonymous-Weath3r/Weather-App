@@ -20,13 +20,8 @@ def get_weather(location):
     DS_Parameters = {"lang":"en","units":"auto","exclude":"minutely,hourly,flags"}
 
     DS_Request = requests.request('GET', DS_URL, headers =dark_sky_key, params = DS_Parameters )
-    DS_Results = json.dumps(DS_Request.json(), indent=2)
+    DS_Results = DS_Request.json()
 
     return DS_Results
-
-def weather_export(location):
-    weather_data = open('weather.json', 'w') 
-    weather_data.write(get_weather(location))
-    weather_data.close()
 
 
