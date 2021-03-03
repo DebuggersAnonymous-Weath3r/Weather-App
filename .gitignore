@@ -2,5 +2,4 @@ __pycache__
 .vscode/
 .DS_Store
 /env
-keys.py
 weather.json
