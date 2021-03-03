@@ -17,7 +17,7 @@
 <div class="search-bar d-flex justify-content-center py-4 pt-2">
     <form action="/search" method="POST">
         <div class="input-field" >
-            <input id="search" name="location" type="text" placeholder="Search for a location"> <br>
+            <input id="search" name="location" type="text" value="{{ location }}">
         </div>
         <div class="submit">
             <input type="submit" value="Search Weather">
@@ -26,78 +26,28 @@
 </div>
 
   <!-- Weather Cards -->
-  <div class="d-flex justify-content-center flex-wrap">
-{% for i in range(7) %}  
-    <div class="card-group">
-        <button type="button" class="btn btn-block text-light border-0" data-toggle="modal" data-target="#staticBackdrop{{i}}">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title" id="card-title{{i}}"></h5>
-                    <p class="card-text fs-1"><span id="temperature{{i}}"></span>°F</p>
-                    <p class="card-text">Preciptation: <span id="precipitation-intensity{{i}}"></span>% <br>Humidity: <span id="humidity{{i}}"></span>% <br>Wind: <span id="wind-speed{{i}}"></span> mph</p>
-                </div>
-            </div>
-        </button>
-        <form action="/graphs">
-            <div class="modal fade" style="color: d3d3d3" id="staticBackdrop{{i}}" data-backdrop="static" data-keyboard="false"  aria-labelledby="staticBackdropLabel" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header " style="background-color: #072037; border-bottom-color: #3d3d3d;">
-                            <h5 class="modal-title fs-2 fw-light" id="modal-title{{i}}" ></h5>
-                            <button type="button" class="btn-close" style="background-color: white;" data-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body"style="background-color: #072037; colo">
-                            <div class="container text-center">
-                                <div class="container d-flex mx-auto row py-5">
-                                    <div class="col-6 pt-3 fs-3 fw-light">
-                                        <p><b>High</b> <span id="high-temp{{i}}"></span>°F / <b>Low</b> <span id="low-temp{{i}}"></span>°F</p>
-                                    </div>
-                                    <div class="col-6 pt-3 fs-3 fw-light">
-                                        <p><b>Rain</b> <span id="precipitation-intensity-modal{{i}}"></span>%</p>
-                                    </div>
-                                </div>
-                            
-                                <div class="container mx-auto row details">
-                                    <div class="col-3 fs-4">
-                                        <b>Temperature:</b> <span id="current-temperature{{i}}"></span>°
-                                    </div>
-                                    <div class="col-3 fs-4">
-                                        <b>Wind:</b> <span id="wind-speed-modal{{i}}"></span> mph
-                                    </div>
-                                    <div class="col-3 fs-4">
-                                        <b>Humidity:</b> <span id="humidity-modal{{i}}"></span>%
-                                    </div>
-                                    <div class="col-3 fs-4">
-                                        <b>UV Index:</b> <span id="uv-index{{i}}"></span>
-                                    </div>
-                                    <div class="col-3 fs-4">
-                                        <b>Preciptation:</b> <span id="precipitation{{i}}"></span> %
-                                    </div>
-                                    <div class="col-3 fs-4">
-                                        <b>Preassure:</b> <span id="pressure{{i}}"></span>  mb
-                                    </div>
-                                    <div class="col-3 fs-4">
-                                        <b>Dew Point:</b> <span id="dew-point{{i}}"></span>°
-                                    </div>
-                                    <div class="col-3 fs-4">
-                                        <b>Visibility:</b> <span id="visibility{{i}}"></span> mi
-                                    </div>
-                                </div>
-                            </div>      
-                        </div>
-                        <div class="modal-footer" style="background-color: #072037; border-top-color: #3d3d3d;">
-                            <input type="submit" class="btn btn-primary btn-lg" style="background-color: #072037; border-color: #d3d3d3; color: white;"value="More Details"></input>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-
+  
+<div class="card-group">
+    <div class="card">
+        <div class="card-body-current">
+            <h5 class="card-title fs-1">{{ weekdays[0] }}</h5>
+            <p class="card-text">{{ weekly[0]["icon"] }}</p>
+            <p class="card-text fs-1">{{ currently["temperature"]|round|int }}°F</p>
+            <p class="card-text">Preciptation: {{  currently["precipProbability"] * 100 }}% <br>Humidity: {{ currently["humidity"] * 100 }}% <br>Wind: {{ currently["windSpeed"] }} mph</p>
+            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+        </div>
     </div>
-{% endfor %}
+    {% for i in range((weekly|length) - 1 ) %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ weekdays[i + 1] }}</h5>
+            <p class="card-text">{{ weekly[i + 1]["icon"] }}</p>
+            <p class="card-text fs-3">{{ weekly[i + 1]["temperatureLow"]|round|int }}°F ~ {{ weekly[i + 1]["temperatureHigh"]|round|int }}°F</p>
+            <p class="card-text">Preciptation: {{ (weekly[i + 1]["precipProbability"] * 100)|round|int }}% <br>Humidity: {{  (weekly[i+1]["humidity"] * 100)|round|int }}% <br>Wind: {{ weekly[i + 1]["windSpeed"] }} mph</p>
+            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+        </div>
+    </div>
+    {% endfor %}
 </div>
 
-<script type=text/javascript id=json-location>{{ url_for('static', filename = 'js/weather.json') }}</script> <!-- Passing the path location for the weather.js to being use in the javascript file. -->
-<script type="text/javascript" src="{{ url_for('static', filename = 'js/weather.json') }}"></script> <!-- Passing the information on the weather.json to be fetch by the javascript file.  -->
-<script src="{{ url_for('static', filename = 'js/search_scripts.js') }}" type="module"></script> <!-- This connects the javascript file to the html -->
 {% endblock %}
