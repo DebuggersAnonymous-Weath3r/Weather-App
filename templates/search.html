@@ -6,6 +6,48 @@
 {% block title %}Weath3r | Weekly Forecast{% endblock %}
 
 {% block content %}
-<!-- All the html for the website goes here. -->
-<!-- This is like an extention of the base.html but just for this page. -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid d-flex justify-content-center">
+        <a class="navbar-brand" href="/"><img src="{{url_for('static',filename = 'images/logo.png')}}" height="100" alt="Logo of Weath3r"></a>
+    </div>
+</nav>
+
+  <!-- Search -->
+<div class="search-bar d-flex justify-content-center py-4 pt-2">
+    <form action="/search" method="POST">
+        <div class="input-field" >
+            <input id="search" name="location" type="text" value="{{ location }}">
+        </div>
+        <div class="submit">
+            <input type="submit" value="Search Weather">
+        </div>
+    </form>
+</div>
+
+  <!-- Weather Cards -->
+  
+<div class="card-group">
+    <div class="card">
+        <div class="card-body-current">
+            <h5 class="card-title fs-1">{{ weekdays[0] }}</h5>
+            <p class="card-text">{{ weekly[0]["icon"] }}</p>
+            <p class="card-text fs-1">{{ currently["temperature"]|round|int }}°F</p>
+            <p class="card-text">Preciptation: {{  currently["precipProbability"] * 100 }}% <br>Humidity: {{ currently["humidity"] * 100 }}% <br>Wind: {{ currently["windSpeed"] }} mph</p>
+            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+        </div>
+    </div>
+    {% for i in range((weekly|length) - 1 ) %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ weekdays[i + 1] }}</h5>
+            <p class="card-text">{{ weekly[i + 1]["icon"] }}</p>
+            <p class="card-text fs-3">{{ weekly[i + 1]["temperatureLow"]|round|int }}°F ~ {{ weekly[i + 1]["temperatureHigh"]|round|int }}°F</p>
+            <p class="card-text">Preciptation: {{ (weekly[i + 1]["precipProbability"] * 100)|round|int }}% <br>Humidity: {{  (weekly[i+1]["humidity"] * 100)|round|int }}% <br>Wind: {{ weekly[i + 1]["windSpeed"] }} mph</p>
+            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 {% endblock %}

@@ -10,15 +10,18 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid d-flex justify-content-center">
-        <a class="navbar-brand" href="#"><image src="{{url_for('static',filename = 'images/logo.png')}}" height="100" ></image></a>
+        <a class="navbar-brand" href="/"><image src="{{url_for('static',filename = 'images/logo.png')}}" height="100" ></image></a>
     </div>
 </nav>
 
 <!-- Search -->
 <div class="search-bar d-flex justify-content-center py-4 pt-2">
-    <form>
-        <div class="input-field">
-            <input id="search" type="text" placeholder="Search for a location">
+    <form action="/search" method="POST">
+        <div class="input-field" >
+            <input id="search" name="location" type="text" placeholder="Search for a location"> <br>
+        </div>
+        <div class="submit">
+            <input type="submit" value="Search Weather">
         </div>
     </form>
 </div>
