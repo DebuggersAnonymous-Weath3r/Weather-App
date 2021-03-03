@@ -57,9 +57,3 @@ def search_page():
 def graphs_page():
     """A page that will display the graph indexes for air quality, hi/low temperatures etc."""
     return render_template('graphs.html')
-
-
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
